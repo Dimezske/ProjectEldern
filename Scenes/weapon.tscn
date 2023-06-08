@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1q7qvblkvj7p"]
+
+[ext_resource type="Script" path="res://Weapon.gd" id="1_n4lu0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3fp1"]
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_n4lu0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="Collider" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_p3fp1")
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="input_event" from="Hitbox" to="." method="_on_hitbox_input_event"]

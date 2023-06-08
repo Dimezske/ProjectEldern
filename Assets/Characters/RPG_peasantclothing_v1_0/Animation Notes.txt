@@ -1,0 +1,29 @@
+Notes:
+
+If you look at the sprite atlas, the gear is sorted the same way as the human sprite.
+
+THe human Sprite and sword are included in the baseset:
+https://cyangmou.itch.io/rpg-character-template
+
+The sorting looks approximately like this:
+idle normal loop 1, 				idle aggro loop 1
+idle normal loop 2, 				idle aggro loop 2
+walk normal, 					walk aggro
+run normal,					run aggro
+							Fist Attack
+Light Attack			gettinghit N,	sitting N
+				gettinghit E,	sitting E	Dead 
+				gettinghit S,	sitting S
+Heavy Attack
+
+
+Most of the animations are created with having a basic framerate of 10 - 12 fps in mind (that's 80ms - 100ms per frame)
+You should set the geear speed to the same speeds you set for the human character.
+
+Armor Gear specifics:
+-the idle gear animation can be applied to both loops of the human idlestrips (blinking doesn't alter the gear)
+-the walk and run animations can be applied to both loops of the human idlestrips (mnormal and aggro)
+
+Weapon Gear Specifics:
+Weapon Animation does not Exist for the normal idle (weapon is put away)
+The weapon always should be applied to the aggro human basesprites

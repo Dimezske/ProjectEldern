@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccnmvrqxsskwa"]
+
+[ext_resource type="Script" path="res://Scenes/BattleScene.gd" id="1_2b4ry"]
+[ext_resource type="PackedScene" uid="uid://dtuvuwcj8fntt" path="res://Scenes/Backgrounds/forest.tscn" id="1_7epgg"]
+[ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="2_g86b6"]
+[ext_resource type="PackedScene" uid="uid://ceksks2c3abeo" path="res://Scenes/Player.tscn" id="3_qvq03"]
+[ext_resource type="PackedScene" uid="uid://cs5utohgbsl3k" path="res://Scenes/Snake.tscn" id="4_v8pek"]
+[ext_resource type="PackedScene" uid="uid://b1grd3i647ghg" path="res://Scenes/health_bar.tscn" id="6_s1ag2"]
+
+[node name="BattleScene" type="Node2D"]
+script = ExtResource("1_2b4ry")
+MonsterType = ExtResource("4_v8pek")
+
+[node name="Forest" parent="." instance=ExtResource("1_7epgg")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+limit_left = 0
+limit_top = 0
+limit_right = 1200
+limit_bottom = 800
+script = ExtResource("2_g86b6")
+
+[node name="Player" parent="." instance=ExtResource("3_qvq03")]
+position = Vector2(911, 531)
+
+[node name="Interface" type="CanvasLayer" parent="."]
+
+[node name="ControlBar" type="TabContainer" parent="Interface"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -154.0
+offset_right = 600.0
+grow_horizontal = 2
+grow_vertical = 0
+tab_alignment = 2
+
+[node name="Stats" type="TabBar" parent="Interface/ControlBar"]
+layout_mode = 2
+
+[node name="HealthBar" parent="Interface/ControlBar/Stats" instance=ExtResource("6_s1ag2")]
+layout_mode = 1
+offset_left = 3.0
+offset_top = 7.0
+offset_right = -640.0
+offset_bottom = -90.0
+
+[node name="Spells" type="TabBar" parent="Interface/ControlBar"]
+visible = false
+layout_mode = 2
+
+[node name="Inventory" type="TabBar" parent="Interface/ControlBar"]
+visible = false
+layout_mode = 2

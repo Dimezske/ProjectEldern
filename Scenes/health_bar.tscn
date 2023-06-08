@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1grd3i647ghg"]
+
+[ext_resource type="Script" path="res://HealthBar.gd" id="1_iadgg"]
+[ext_resource type="Texture2D" uid="uid://chfer0kyoxiqm" path="res://Assets/Gui/energy_bar.png" id="2_wc3kp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t3wdt"]
+texture = ExtResource("2_wc3kp")
+modulate_color = Color(0.121569, 1, 0.466667, 0.254902)
+
+[node name="HealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iadgg")
+
+[node name="Progress" type="ProgressBar" parent="."]
+modulate = Color(0.0627451, 1, 0, 0.462745)
+self_modulate = Color(0, 1, 0, 0.54902)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxTexture_t3wdt")
+max_value = 10.0
+value = 5.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Progress"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/10"
+horizontal_alignment = 1
+vertical_alignment = 1

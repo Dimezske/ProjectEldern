@@ -1,0 +1,10 @@
+Changelog:
+
+-3 new skincolor types for the character + sprite atlas and files
+-seperated cast shadow from the character + sprite atlas and files
+-new naming convention, which makes it easier usable in the GMS asset tree and will make paperdolling equipment easier to add.
+-fixed that the female doesn't blink in the 2nd loop of the east animation
+-fixed an issue with the north male idling animation
+-fixed an issue in the female east walking animation
+-fixed a ton of shadow-issues, as I seperated the shadow
+-kept the old files / flat colored versions in there for quick prototyping (note: those don't have any of the fixes mentioned above)

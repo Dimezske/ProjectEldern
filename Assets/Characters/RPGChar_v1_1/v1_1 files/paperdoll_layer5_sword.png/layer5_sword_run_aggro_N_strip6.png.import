@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://7eug58gad4kj"
+path="res://.godot/imported/layer5_sword_run_aggro_N_strip6.png-2d9512894427b462ace2050d3976b7ed.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Assets/Characters/RPGChar_v1_1/v1_1 files/paperdoll_layer5_sword.png/layer5_sword_run_aggro_N_strip6.png"
+dest_files=["res://.godot/imported/layer5_sword_run_aggro_N_strip6.png-2d9512894427b462ace2050d3976b7ed.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

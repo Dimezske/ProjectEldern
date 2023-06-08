@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3 uid="uid://cs5utohgbsl3k"]
+
+[ext_resource type="Texture2D" uid="uid://63242ut86ywk" path="res://Assets/Sprites/Snake.png" id="1"]
+[ext_resource type="Script" path="res://Scenes/Snake.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://b516egfgynkny" path="res://Scenes/HitboxComponent.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://bnhv5eof2hwe3" path="res://Scenes/HealthComponent.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://h7cakrlh5gy5" path="res://Scenes/AttackComponent.tscn" id="4_rkje3"]
+[ext_resource type="PackedScene" uid="uid://w4fc7g3qtukx" path="res://Scenes/ai_movement_component.tscn" id="5_2fufn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i36on"]
+size = Vector2(57, 44)
+
+[sub_resource type="Animation" id="1"]
+resource_name = "Attack"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r4cp7"]
+_data = {
+"Attack": SubResource("1"),
+"RESET": SubResource("2")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_og65p"]
+size = Vector2(76, 71)
+
+[node name="Snake" type="CharacterBody2D"]
+script = ExtResource("2")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-18.5, 12)
+shape = SubResource("RectangleShape2D_i36on")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite")
+libraries = {
+"": SubResource("AnimationLibrary_r4cp7")
+}
+
+[node name="AiMovementComponent" parent="." instance=ExtResource("5_2fufn")]
+
+[node name="AttackComponent" parent="." instance=ExtResource("4_rkje3")]
+
+[node name="HealthComponent" parent="." instance=ExtResource("4")]
+position = Vector2(-50, -65)
+MAX_HEALTH = 100.0
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3")]
+position = Vector2(-50, -65)
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(36, 65.5)
+shape = SubResource("RectangleShape2D_og65p")
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[connection signal="input_event" from="HitboxComponent" to="." method="_on_hitbox_component_input_event"]
+[connection signal="timeout" from="AttackTimer" to="AiMovementComponent" method="_on_attack_timer_timeout"]

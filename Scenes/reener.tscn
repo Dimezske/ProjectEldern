@@ -1,0 +1,96 @@
+[gd_scene load_steps=13 format=3 uid="uid://dupbs4e3j0e7c"]
+
+[ext_resource type="Script" path="res://Scenes/reener.gd" id="1_e450e"]
+[ext_resource type="Texture2D" uid="uid://drlkdlqhef4xp" path="res://Assets/Sprites/Reener.png" id="1_gifih"]
+[ext_resource type="PackedScene" uid="uid://w4fc7g3qtukx" path="res://Scenes/ai_movement_component.tscn" id="3_j3r8n"]
+[ext_resource type="PackedScene" uid="uid://h7cakrlh5gy5" path="res://Scenes/AttackComponent.tscn" id="4_6ps6u"]
+[ext_resource type="PackedScene" uid="uid://bnhv5eof2hwe3" path="res://Scenes/HealthComponent.tscn" id="5_ylqu1"]
+[ext_resource type="PackedScene" uid="uid://b516egfgynkny" path="res://Scenes/HitboxComponent.tscn" id="6_fisun"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x50jr"]
+size = Vector2(57, 44)
+
+[sub_resource type="Animation" id="Animation_n85qi"]
+resource_name = "Attack"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_i3yek"]
+resource_name = "Hurt"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_7xviu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0k5ja"]
+_data = {
+"Attack": SubResource("Animation_n85qi"),
+"Hurt": SubResource("Animation_i3yek"),
+"RESET": SubResource("Animation_7xviu")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqpi0"]
+size = Vector2(41, 37.5)
+
+[node name="Reener" type="CharacterBody2D"]
+script = ExtResource("1_e450e")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(4, 5)
+shape = SubResource("RectangleShape2D_x50jr")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_gifih")
+hframes = 3
+
+[node name="AnimationTree" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0k5ja")
+}
+
+[node name="AiMovementComponent" parent="." instance=ExtResource("3_j3r8n")]
+
+[node name="AttackComponent" parent="." instance=ExtResource("4_6ps6u")]
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_ylqu1")]
+
+[node name="HitboxComponent" parent="." instance=ExtResource("6_fisun")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-3.5, 8.25)
+shape = SubResource("RectangleShape2D_iqpi0")
