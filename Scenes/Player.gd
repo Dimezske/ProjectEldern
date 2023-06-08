@@ -32,7 +32,7 @@ func _damage_text():
 		$Weapon/Hitbox/Collider.global_position = global_position
 		$DamageHint.visible = false
 		$Weapon/Hitbox/Collider.visible = false
-		
+		$Weapon/Hitbox/Collider.disabled = true
 
 func _cancel_damage_text():
 	if Input.is_action_just_pressed("left_click"):
