@@ -35,14 +35,11 @@ func changeDirection():
 	position.y = clamp(position.y, 0, screen_size.y)
 
 func attack():
-	
-	# Implement your attack logic here
-#	target -= attack.attack_damage
 	print("Attacking!")
-	# Add your attack code, such as spawning projectiles or applying damage to the player
+	
 
 func randomizeTimer():
-	$AttackTimer.wait_time = randf_range(1,10)
+	$AttackTimer.wait_time = randf_range(1,5)
 	$AiAttackComponent/Hitbox.visible == true
 	$AiAttackComponent/Hitbox/Collider.disabled = true
 	

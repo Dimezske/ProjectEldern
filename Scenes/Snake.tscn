@@ -1,11 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://cs5utohgbsl3k"]
+[gd_scene load_steps=14 format=3 uid="uid://cs5utohgbsl3k"]
 
 [ext_resource type="Texture2D" uid="uid://63242ut86ywk" path="res://Assets/Sprites/Snake.png" id="1"]
 [ext_resource type="Script" path="res://Scenes/Snake.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://b516egfgynkny" path="res://Scenes/HitboxComponent.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://bnhv5eof2hwe3" path="res://Scenes/HealthComponent.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://34508aj7gok7" path="res://Scenes/follow_component.tscn" id="4_mwk30"]
 [ext_resource type="PackedScene" uid="uid://h7cakrlh5gy5" path="res://Scenes/AttackComponent.tscn" id="4_rkje3"]
 [ext_resource type="PackedScene" uid="uid://w4fc7g3qtukx" path="res://Scenes/ai_movement_component.tscn" id="5_2fufn"]
+[ext_resource type="PackedScene" uid="uid://d1q7qvblkvj7p" path="res://Scenes/weapon.tscn" id="7_31cva"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i36on"]
 size = Vector2(57, 44)
@@ -69,6 +71,8 @@ libraries = {
 
 [node name="AiMovementComponent" parent="." instance=ExtResource("5_2fufn")]
 
+[node name="FollowComponent" parent="." instance=ExtResource("4_mwk30")]
+
 [node name="AttackComponent" parent="." instance=ExtResource("4_rkje3")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("4")]
@@ -77,6 +81,8 @@ MAX_HEALTH = 100.0
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3")]
 position = Vector2(-50, -65)
+collision_layer = 2
+collision_mask = 0
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
@@ -84,6 +90,9 @@ position = Vector2(36, 65.5)
 shape = SubResource("RectangleShape2D_og65p")
 
 [node name="AttackTimer" type="Timer" parent="."]
+
+[node name="Weapon" parent="." instance=ExtResource("7_31cva")]
+position = Vector2(30, -14)
 
 [connection signal="input_event" from="HitboxComponent" to="." method="_on_hitbox_component_input_event"]
 [connection signal="timeout" from="AttackTimer" to="AiMovementComponent" method="_on_attack_timer_timeout"]

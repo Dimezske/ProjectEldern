@@ -10,6 +10,8 @@ script = ExtResource("1_n4lu0")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="Collider" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_p3fp1")

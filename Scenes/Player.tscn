@@ -81,7 +81,9 @@ MAX_HEALTH = 100.0
 position = Vector2(-69, -20)
 scale = Vector2(2, 2)
 
-[node name="HitboxComponent" parent="." instance=ExtResource("7_e4rxi")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_e4rxi")]
+collision_mask = 0
+health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(-5, 30.5)
@@ -89,3 +91,5 @@ shape = SubResource("RectangleShape2D_cjy58")
 
 [node name="WaitTimer" type="Timer" parent="."]
 one_shot = true
+
+[editable path="Weapon"]
