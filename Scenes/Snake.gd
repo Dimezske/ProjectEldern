@@ -18,4 +18,9 @@ func _process(delta):
 func _on_hitbox_component_input_event(viewport, event, shape_idx):
 	print(event)
 
-
+func _attack():
+	$Weapon/Hitbox/Collider.disabled = false
+	$Weapon/Hitbox/Collider.visible = true
+	await get_tree().create_timer(0.25).timeout
+	$Weapon/Hitbox/Collider.visible = false
+	$Weapon/Hitbox/Collider.disabled = true

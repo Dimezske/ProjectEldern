@@ -4,17 +4,22 @@ class_name AiMovementComponent
 @export var speed = 200
 @export var attackDistance = 100
 @export var movementInterval = 2  # Time interval for changing movement direction
+@export var vision_range = 500 # How far the enemy can see.
 
 var target: Node2D
 var timer = 0.0
 var direction = Vector2.ZERO
 var screen_size
+var chasing : bool = false
+
 func _ready():
 	screen_size = get_viewport_rect().size
 	target = get_node("/root/BattleScene/Player")  # Change "/root/Player" to the path of your player character node
 	randomize()
 	changeDirection()
-
+	
+	$Vision/CollisionShape2D.shape.radius = vision_range
+	
 func _process(delta):
 	var distance = target.global_position.distance_to(global_position)
 
@@ -36,13 +41,22 @@ func changeDirection():
 
 func attack():
 	print("Attacking!")
+	get_parent()._attack()
 	
 
 func randomizeTimer():
-	$AttackTimer.wait_time = randf_range(1,5)
+	$AttackTimer.wait_time = randf_range(1,2)
 	$AiAttackComponent/Hitbox.visible == true
 	$AiAttackComponent/Hitbox/Collider.disabled = true
 	
 func _on_attack_timer_timeout():
 	randomizeTimer()
 	
+func _on_vision_body_entered(body):
+	if body == target:
+		chasing = true
+
+
+func _on_vision_body_exited(body):
+	if body == target:
+		chasing = false

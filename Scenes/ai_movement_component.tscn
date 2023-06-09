@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://w4fc7g3qtukx"]
+[gd_scene load_steps=3 format=3 uid="uid://w4fc7g3qtukx"]
 
 [ext_resource type="Script" path="res://AiMovementComponent.gd" id="1_yt70j"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5u6to"]
+radius = 429.466
+
 [node name="AiMovementComponent" type="Node2D"]
 script = ExtResource("1_yt70j")
+
+[node name="Vision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
+shape = SubResource("CircleShape2D_5u6to")
+
+[connection signal="body_entered" from="Vision" to="." method="_on_vision_body_entered"]
+[connection signal="body_exited" from="Vision" to="." method="_on_vision_body_exited"]
