@@ -94,5 +94,10 @@ shape = SubResource("RectangleShape2D_og65p")
 [node name="Weapon" parent="." instance=ExtResource("7_31cva")]
 position = Vector2(30, -14)
 
+[node name="Hitbox" parent="Weapon" index="1"]
+collision_mask = 1
+
 [connection signal="input_event" from="HitboxComponent" to="." method="_on_hitbox_component_input_event"]
 [connection signal="timeout" from="AttackTimer" to="AiMovementComponent" method="_on_attack_timer_timeout"]
+
+[editable path="Weapon"]
