@@ -23,5 +23,6 @@ func spell_enable(spell : SpellComponent):
 	enable_spell = spell.enable
 	
 func _on_item_list_item_clicked(index, at_position, mouse_button_index):
-	if index == 2:
-		pass
+	print("hello")
+	print(index, at_position, mouse_button_index)
+
