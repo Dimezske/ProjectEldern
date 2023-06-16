@@ -6,7 +6,7 @@ var movementSpeed = 100
 func _ready():
 	pass
 
-func _process(delta):
-	var player = get_node("/root/BattleScene/Player")
-	var direction = (player.global_position - global_position).normalized()
-	get_parent().move_and_collide(direction * movementSpeed * delta)
+#func _process(delta):
+#	var player = get_node("/root/BattleScene/Player")
+#	var direction = (player.global_position - global_position).normalized()
+#	get_parent().move_and_collide(direction * movementSpeed * delta)

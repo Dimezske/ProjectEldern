@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cogo4jaw65sxk"]
+
+[ext_resource type="Script" path="res://Spells/BreezeSpell.gd" id="1_2avi0"]
+[ext_resource type="Texture2D" uid="uid://dv1jfny4tmhmm" path="res://Assets/Particles/Particle_Leaf1.png" id="2_w2fmi"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_acmgu"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_uq4m4"]
+min_value = -663.23
+max_value = 1.57
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -0.854545), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="BreezeSpell" type="Node2D"]
+script = ExtResource("1_2avi0")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_acmgu")
+amount = 38
+randomness = 1.0
+lifetime_randomness = 1.0
+fixed_fps = 120
+local_coords = true
+texture = ExtResource("2_w2fmi")
+gravity = Vector2(0, 1000)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+angular_velocity_min = 500.0
+angular_velocity_max = 500.0
+orbit_velocity_min = -2.0
+orbit_velocity_max = 5.0
+damping_min = 200.0
+damping_max = 200.0
+hue_variation_curve = SubResource("Curve_uq4m4")

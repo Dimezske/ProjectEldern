@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ceksks2c3abeo"]
+[gd_scene load_steps=14 format=3 uid="uid://ceksks2c3abeo"]
 
 [ext_resource type="Script" path="res://Scenes/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dv12byps6uq43" path="res://Assets/Sprites/Warrior.png" id="2"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bnhv5eof2hwe3" path="res://Scenes/HealthComponent.tscn" id="5_ljq8q"]
 [ext_resource type="PackedScene" uid="uid://d1q7qvblkvj7p" path="res://Scenes/weapon.tscn" id="6_b5w1o"]
 [ext_resource type="PackedScene" uid="uid://b516egfgynkny" path="res://Scenes/HitboxComponent.tscn" id="7_e4rxi"]
+[ext_resource type="PackedScene" uid="uid://crmfkgpj7r2uq" path="res://Spells/spell_component.tscn" id="8_ldh13"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjuh8"]
 size = Vector2(71, 44)
@@ -55,8 +56,10 @@ size = Vector2(82, 109)
 script = ExtResource("1")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-2.5, 61)
 shape = SubResource("RectangleShape2D_pjuh8")
+disabled = true
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2")
@@ -91,5 +94,7 @@ shape = SubResource("RectangleShape2D_cjy58")
 
 [node name="WaitTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="SpellComponent" parent="." instance=ExtResource("8_ldh13")]
 
 [editable path="Weapon"]

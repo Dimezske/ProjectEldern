@@ -1,15 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://dupbs4e3j0e7c"]
+[gd_scene load_steps=14 format=3 uid="uid://cqmdh4qjpnkdj"]
 
-[ext_resource type="Script" path="res://Scenes/reener.gd" id="1_e450e"]
-[ext_resource type="Texture2D" uid="uid://drlkdlqhef4xp" path="res://Assets/Sprites/Reener.png" id="1_gifih"]
-[ext_resource type="PackedScene" uid="uid://w4fc7g3qtukx" path="res://Scenes/ai_movement_component.tscn" id="3_j3r8n"]
-[ext_resource type="PackedScene" uid="uid://h7cakrlh5gy5" path="res://Scenes/AttackComponent.tscn" id="4_6ps6u"]
-[ext_resource type="PackedScene" uid="uid://34508aj7gok7" path="res://Scenes/follow_component.tscn" id="4_d3x37"]
-[ext_resource type="PackedScene" uid="uid://bnhv5eof2hwe3" path="res://Scenes/HealthComponent.tscn" id="5_ylqu1"]
-[ext_resource type="PackedScene" uid="uid://b516egfgynkny" path="res://Scenes/HitboxComponent.tscn" id="6_fisun"]
-[ext_resource type="PackedScene" uid="uid://d1q7qvblkvj7p" path="res://Scenes/weapon.tscn" id="8_qqfj2"]
+[ext_resource type="Script" path="res://Scenes/fire_horse.gd" id="1_0al7b"]
+[ext_resource type="Texture2D" uid="uid://cd1c51p7qyf7n" path="res://Assets/Sprites/FireHorse.png" id="1_wy0im"]
+[ext_resource type="PackedScene" uid="uid://w4fc7g3qtukx" path="res://Scenes/ai_movement_component.tscn" id="2_xfpr0"]
+[ext_resource type="PackedScene" uid="uid://34508aj7gok7" path="res://Scenes/follow_component.tscn" id="3_n6nwr"]
+[ext_resource type="PackedScene" uid="uid://h7cakrlh5gy5" path="res://Scenes/AttackComponent.tscn" id="4_m6isa"]
+[ext_resource type="PackedScene" uid="uid://bnhv5eof2hwe3" path="res://Scenes/HealthComponent.tscn" id="5_c0uba"]
+[ext_resource type="PackedScene" uid="uid://b516egfgynkny" path="res://Scenes/HitboxComponent.tscn" id="6_dvy14"]
+[ext_resource type="PackedScene" uid="uid://d1q7qvblkvj7p" path="res://Scenes/weapon.tscn" id="7_qbt8r"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_85hrf"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sisqd"]
 size = Vector2(57, 44)
 
 [sub_resource type="Animation" id="1"]
@@ -49,19 +49,18 @@ _data = {
 "RESET": SubResource("2")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y57o6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4381"]
 size = Vector2(76, 71)
 
-[node name="Reener" type="CharacterBody2D"]
-script = ExtResource("1_e450e")
+[node name="FireHorse" type="CharacterBody2D"]
+script = ExtResource("1_0al7b")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-18.5, 12)
-shape = SubResource("RectangleShape2D_85hrf")
+shape = SubResource("RectangleShape2D_sisqd")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_gifih")
-hframes = 3
+texture = ExtResource("1_wy0im")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite")
@@ -69,17 +68,17 @@ libraries = {
 "": SubResource("AnimationLibrary_r4cp7")
 }
 
-[node name="AiMovementComponent" parent="." instance=ExtResource("3_j3r8n")]
+[node name="AiMovementComponent" parent="." instance=ExtResource("2_xfpr0")]
 
-[node name="FollowComponent" parent="." instance=ExtResource("4_d3x37")]
+[node name="FollowComponent" parent="." instance=ExtResource("3_n6nwr")]
 
-[node name="AttackComponent" parent="." instance=ExtResource("4_6ps6u")]
+[node name="AttackComponent" parent="." instance=ExtResource("4_m6isa")]
 
-[node name="HealthComponent" parent="." instance=ExtResource("5_ylqu1")]
+[node name="HealthComponent" parent="." instance=ExtResource("5_c0uba")]
 position = Vector2(-50, -65)
 MAX_HEALTH = 100.0
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_fisun")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_dvy14")]
 position = Vector2(-50, -65)
 collision_layer = 2
 collision_mask = 0
@@ -87,11 +86,11 @@ health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(36, 65.5)
-shape = SubResource("RectangleShape2D_y57o6")
+shape = SubResource("RectangleShape2D_x4381")
 
 [node name="AttackTimer" type="Timer" parent="."]
 
-[node name="Weapon" parent="." instance=ExtResource("8_qqfj2")]
+[node name="Weapon" parent="." instance=ExtResource("7_qbt8r")]
 position = Vector2(30, -14)
 
 [node name="Hitbox" parent="Weapon" index="1"]

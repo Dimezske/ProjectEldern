@@ -1,0 +1,19 @@
+Project Eldern
+
+Spells
+	Water
+		drizzle
+		splash
+		rain
+		hail
+	Fire
+		tinder
+		burn
+		ember
+		scorch
+		fireball
+	Earth
+	Wind
+		breeze
+	Holy
+	Dark

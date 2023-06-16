@@ -20,14 +20,15 @@ func _ready():
 	
 	$Vision/CollisionShape2D.shape.radius = vision_range
 
-#func _process(delta):
+func _process(delta):
+	pass
 #	var distance = target.global_position.distance_to(global_position)
-#
-##    if distance > attackDistance:
-##        get_parent().move_and_collide(direction * speed * delta)
+
+#    if distance > attackDistance:
+#        get_parent().move_and_collide(direction * speed * delta)
 #	if distance <= attackDistance:
 #		attack()
-#
+
 #	if chasing:
 #		get_parent().move_and_collide(get_parent().global_position.direction_to(target.global_position) * speed * delta)
 #
@@ -35,7 +36,7 @@ func _ready():
 #	if timer >= movementInterval && !chasing:
 #		changeDirection()
 #		timer = 0.0
-
+#
 #func changeDirection():
 #	direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 #	position.x = clamp(position.x, 0, screen_size.x)
@@ -49,13 +50,13 @@ func attack():
 		# Add your attack code, such as spawning projectiles or applying damage to the player
 		get_parent()._attack()
 
-#func randomizeTimer():
-#    $AttackTimer.wait_time = randf_range(1,2)
-#    $AiAttackComponent/Hitbox.visible == true
-#    $AiAttackComponent/Hitbox/Collider.disabled = true
-#
-#func _on_attack_timer_timeout():
-#    randomizeTimer()
+func randomizeTimer():
+	$AttackTimer.wait_time = randf_range(1,2)
+	$AiAttackComponent/Hitbox.visible == true
+	$AiAttackComponent/Hitbox/Collider.disabled = true
+
+func _on_attack_timer_timeout():
+	randomizeTimer()
 	
 
 

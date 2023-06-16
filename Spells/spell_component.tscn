@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://crmfkgpj7r2uq"]
+
+[ext_resource type="Script" path="res://Spells/spell_component.gd" id="1_rpw52"]
+[ext_resource type="PackedScene" uid="uid://cogo4jaw65sxk" path="res://Spells/breeze_spell.tscn" id="2_76131"]
+
+[node name="SpellComponent" type="Node2D"]
+script = ExtResource("1_rpw52")
+SpellType = ExtResource("2_76131")

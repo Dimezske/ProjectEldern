@@ -1,3 +1,3 @@
 {
-"wild_player_position": Vector2(672.693, 276.881)
+"wild_player_position": Vector2(633.278, 620.928)
 }

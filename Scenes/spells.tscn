@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://fqfu5q5m07wi"]
+
+[ext_resource type="Texture2D" uid="uid://cshybnvunp0vu" path="res://icon.png" id="1_ullxf"]
+[ext_resource type="Texture2D" uid="uid://bd76e5v82q5xt" path="res://fire_icon.png" id="2_csnxd"]
+[ext_resource type="Texture2D" uid="uid://dt4l88b7qprue" path="res://earth_icon.png" id="3_6hihw"]
+[ext_resource type="Texture2D" uid="uid://j2jwk86d8m64" path="res://wind_icon.png" id="4_eirbh"]
+[ext_resource type="Texture2D" uid="uid://e0qwn4rxfg07" path="res://holy_icon.png" id="5_248eb"]
+[ext_resource type="Texture2D" uid="uid://bteomhe38ytxk" path="res://dark_icon.png" id="6_encmy"]
+
+[node name="Spells" type="TabContainer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -154.0
+offset_right = 600.0
+grow_horizontal = 2
+grow_vertical = 0
+tab_alignment = 2
+
+[node name="Spells" type="TabBar" parent="."]
+layout_mode = 2
+
+[node name="Tree" type="Tree" parent="Spells"]
+layout_mode = 0
+offset_left = 924.0
+offset_top = -278.0
+offset_right = 1192.0
+offset_bottom = -43.0
+columns = 2
+column_titles_visible = true
+
+[node name="ItemList" type="ItemList" parent="Spells/Tree"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 276.0
+offset_bottom = 230.0
+item_count = 6
+icon_scale = 0.8
+item_0/text = "Water"
+item_0/icon = ExtResource("1_ullxf")
+item_1/text = "Fire"
+item_1/icon = ExtResource("2_csnxd")
+item_2/text = "Earth"
+item_2/icon = ExtResource("3_6hihw")
+item_3/text = "Wind"
+item_3/icon = ExtResource("4_eirbh")
+item_4/text = "Holy"
+item_4/icon = ExtResource("5_248eb")
+item_5/text = "Dark"
+item_5/icon = ExtResource("6_encmy")
+
+[node name="Inventory" type="TabBar" parent="."]
+visible = false
+layout_mode = 2
