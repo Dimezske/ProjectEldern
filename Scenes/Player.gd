@@ -13,6 +13,7 @@ func _input(event):
 	if Input.is_action_just_pressed("left_click"):
 		right_click_pos = get_global_mouse_position()
 		_damage_text()
+		
 func _physics_process(delta):
 	if target != null:
 		velocity = position.direction_to(target) * speed

@@ -1,8 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://crmfkgpj7r2uq"]
+[gd_scene load_steps=5 format=3 uid="uid://crmfkgpj7r2uq"]
 
 [ext_resource type="Script" path="res://Spells/spell_component.gd" id="1_rpw52"]
 [ext_resource type="PackedScene" uid="uid://cogo4jaw65sxk" path="res://Spells/breeze_spell.tscn" id="2_76131"]
+[ext_resource type="PackedScene" uid="uid://c5bjisaobfful" path="res://Spells/scorch_spell.tscn" id="3_dj0w6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7u42c"]
+radius = 16.4924
 
 [node name="SpellComponent" type="Node2D"]
 script = ExtResource("1_rpw52")
-SpellType = ExtResource("2_76131")
+
+[node name="Spell Hitbox" type="Area2D" parent="."]
+
+[node name="SpellCollider" type="CollisionShape2D" parent="Spell Hitbox"]
+shape = SubResource("CircleShape2D_7u42c")
+
+[node name="BreezeSpell" parent="." instance=ExtResource("2_76131")]
+visible = false
+
+[node name="ScorchSpell" parent="." instance=ExtResource("3_dj0w6")]
+visible = false

@@ -3,11 +3,18 @@ class_name ScorchSpell
 
 var enable = false
 var selected_spell
-# Called when the node enters the scene tree for the first time.
+var current_spell
+
 func _ready():
-	pass # Replace with function body.
+	self.visible = false
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	global_position = get_global_mouse_position()
+func _process(_delta):
+	if Global.spell == 1:
+		enable = true
+		if enable:
+			self.visible = true
+			global_position = get_global_mouse_position()
+		if enable == false:
+			Global.spell = null
+	if Global.spell != 1:
+		self.visible = false

@@ -22,6 +22,12 @@ func _ready():
 
 func _process(delta):
 	pass
+# DO NOT DELETED THESE COMMENTS
+# DO NOT DELETED THESE COMMENTS
+# DO NOT DELETED THESE COMMENTS
+# DO NOT DELETED THESE COMMENTS
+# DO NOT DELETED THESE COMMENTS
+
 #	var distance = target.global_position.distance_to(global_position)
 
 #    if distance > attackDistance:

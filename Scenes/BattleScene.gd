@@ -6,7 +6,7 @@ class_name BattleScene
 @export var MonsterLevel := 1
 var monster
 var index
-var enable_spell = false
+
 func _ready():
 	for index in MonsterAmount:
 		monster = MonsterType.instantiate()
@@ -14,15 +14,27 @@ func _ready():
 		monster.MonsterLevel = MonsterLevel
 		add_child(monster)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-func spell_enable(spell : SpellComponent):
-	enable_spell = spell.enable
-	
-func _on_item_list_item_clicked(index, at_position, mouse_button_index):
-	print("hello")
-	print(index, at_position, mouse_button_index)
-
+func _on_item_list_item_selected(index):
+	print("selected", index)
+	if index == 0:
+		print(index, " water")
+		Global.spell = index
+		print(Global.spell)
+	if index == 1:
+		print(index, " fire")
+		Global.spell = index
+	if index == 2:
+		print(index, " earth")
+		Global.spell = index
+	if index == 3:
+		print(index, " wind")
+		Global.spell = index
+	if index == 4:
+		print(index, " holy")
+		Global.spell = index
+	if index == 5:
+		print(index, " dark")
+		Global.spell = index
