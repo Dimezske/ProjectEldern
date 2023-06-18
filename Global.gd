@@ -2,7 +2,7 @@ extends Node
 
 var data: Dictionary = {}
 var spell
-var spell2
+var damage
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

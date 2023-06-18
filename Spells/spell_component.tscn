@@ -20,3 +20,8 @@ visible = false
 
 [node name="ScorchSpell" parent="." instance=ExtResource("3_dj0w6")]
 visible = false
+
+[node name="DamageTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Spell Hitbox" to="." method="_on_spell_hitbox_body_entered"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

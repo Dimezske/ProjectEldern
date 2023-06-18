@@ -23,3 +23,17 @@ func damage(attack : AttackComponent):
 		await get_tree().create_timer(2).timeout
 		invulrability = false
 
+func spell_damage(spell_attack : AttackComponent):
+	health -= spell_attack.attack_damage
+	$ProgressBar.value -= spell_attack.attack_damage
+	
+	if health <= 0:
+			get_parent().queue_free()
+			
+	if invulrability:
+		pass
+	else:
+		invulrability = true
+		await get_tree().create_timer(2).timeout
+		invulrability = false
+

@@ -5,6 +5,8 @@ var enable = false
 var selected_spell
 var current_spell
 
+var damage := 25.0
+
 func _ready():
 	self.visible = false
 	
